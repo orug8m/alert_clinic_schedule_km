@@ -1,0 +1,83 @@
+require:
+  - rubocop-performance
+  # - rubocop-rails
+  # - rubocop-rspec
+  # - rubocop-factory_bot
+
+AllCops:
+  TargetRubyVersion: 3.3.0
+  Exclude:
+    # - 'vendor/**/*'
+    # - 'config/**/*'
+    # - 'bin/*'
+    # - 'config.ru'
+    # - 'spec/dummy_app/**/*'
+    - Gemfile*
+  DisplayCopNames: true
+  NewCops: enable
+
+# Rails/UnknownEnv:
+#   Environments:
+#     - production
+#     - development
+#     - test
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# クラスにコメントを残さない
+Style/Documentation:
+  Enabled: false
+
+# 1行の長さをチェックする
+Layout/LineLength:
+  Max: 120
+
+# メソッドあたりの行数
+Metrics/MethodLength:
+  Max: 40
+
+# クラスの行数
+Metrics/ClassLength:
+  Max: 120
+
+# # rspec と seeder は長くなるが複雑にならないので除外
+# Metrics/BlockLength:
+#   Exclude:
+#     - 'spec/**/*.rb'
+#     - 'packages/core/lib/tasks/core/base_seeds.rake'
+
+# Rspec
+
+# requestDescriberを使うときは無名subjectになるため無効にする
+RSpec/NamedSubject:
+  Enabled: false
+
+# letの数を減らそうとDRYにするとかえって読みづらくなるので無効にする
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+# 日本語を使うので無効にする
+RSpec/ContextWording:
+  Enabled: false
+
+# contextが2段になるケースを書きたいので3から増やす
+RSpec/NestedGroups:
+  Max: 4
+
+# 検証メソッドの長さを増やす
+RSpec/ExampleLength:
+  Max: 15
+
+# exampleが複数でもわかりやすくなる場合があるので無効にする
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# テスト用の変数名を考える労力を削るため無効にする
+RSpec/IndexedLet:
+  Enabled: false
+
+# idにULIDを使っているため無効にする
+FactoryBot/IdSequence:
+  Enabled: false

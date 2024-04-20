@@ -1,0 +1,10 @@
+services:
+  batch:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT=development
+      - SLACK_API_TOKEN=${SLACK_API_TOKEN}
+    volumes:
+      - .:/var/task:cached
